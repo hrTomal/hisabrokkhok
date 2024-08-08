@@ -1,3 +1,4 @@
+import 'package:business_tracker/config/styles/app_dimensions.dart';
 import 'package:business_tracker/features/products/presentation/pages/all_products.dart';
 import 'package:business_tracker/features/settings/presentation/pages/settings_page.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class SlidingUpPanelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dimensions = AppDimensions(context);
     final List<Map<String, dynamic>> tiles = [
       {
         'icon': Icons.inventory,
@@ -37,7 +39,7 @@ class SlidingUpPanelWidget extends StatelessWidget {
       {'icon': Icons.attach_money, 'text': 'Pay/Get cash', 'onPressed': () {}},
     ];
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: dimensions.pagePaddingGlobal,
       child: GridView.builder(
         itemCount: tiles.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
