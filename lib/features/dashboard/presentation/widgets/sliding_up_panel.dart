@@ -1,3 +1,4 @@
+import 'package:business_tracker/features/products/presentation/pages/all_products.dart';
 import 'package:business_tracker/features/settings/presentation/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,13 @@ class SlidingUpPanelWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> tiles = [
-      {'icon': Icons.note_add, 'text': 'New record', 'onPressed': () {}},
+      {
+        'icon': Icons.inventory,
+        'text': 'Products',
+        'onPressed': () {
+          Navigator.of(context).pushNamed(AllProducts.routeName);
+        }
+      },
       {
         'icon': Icons.settings,
         'text': 'Settings',
@@ -22,8 +29,8 @@ class SlidingUpPanelWidget extends StatelessWidget {
               SettingsPage.routeName,
             )
       },
-      {'icon': Icons.shopping_bag, 'text': 'Sale Order', 'onPressed': () {}},
-      {'icon': Icons.add_box, 'text': 'New purchase', 'onPressed': () {}},
+      {'icon': Icons.shopping_bag, 'text': 'Sales', 'onPressed': () {}},
+      {'icon': Icons.add_box, 'text': 'Purchase', 'onPressed': () {}},
       {'icon': Icons.playlist_add, 'text': 'P.Order', 'onPressed': () {}},
       {'icon': Icons.undo, 'text': 'Customer return', 'onPressed': () {}},
       {'icon': Icons.replay, 'text': 'Return purchase', 'onPressed': () {}},

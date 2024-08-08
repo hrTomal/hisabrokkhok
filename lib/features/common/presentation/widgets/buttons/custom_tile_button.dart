@@ -14,7 +14,9 @@ class CustomTileButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var pageWidth = MediaQuery.of(context).size.width;
     return Card(
+      color: Theme.of(context).colorScheme.surface,
       elevation: 4.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
@@ -23,19 +25,22 @@ class CustomTileButton extends StatelessWidget {
         onTap: onPressed,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
               icon,
-              size: 50.0,
-              color: Colors.blue,
+              size: (pageWidth / 14),
+              color: Theme.of(context).colorScheme.primary,
             ),
-            SizedBox(height: 10.0),
+            SizedBox(
+              height: pageWidth / 50,
+            ),
             Text(
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 16.0,
                 fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
           ],

@@ -89,9 +89,9 @@ class _DashboardState extends State<Dashboard> {
 
             SlidingUpPanel(
               controller: _panelController,
-              header: const Text('Menu'),
+              // header: const Text('Menu'),
               maxHeight: deviceHeight * 0.75,
-              minHeight: deviceHeight * 0.50,
+              minHeight: deviceHeight * 0.25,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(slidingPanelTopRadius),
                 topRight: Radius.circular(slidingPanelTopRadius),
