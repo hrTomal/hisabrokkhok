@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final double? height;
   final String? hintText;
   final String? labelText;
+  final bool isNumberOnly;
 
   const CustomTextField({
     Key? key,
@@ -14,6 +15,7 @@ class CustomTextField extends StatelessWidget {
     this.height,
     this.hintText,
     this.labelText,
+    this.isNumberOnly = false,
   }) : super(key: key);
 
   @override
@@ -24,6 +26,7 @@ class CustomTextField extends StatelessWidget {
       height: height,
       child: TextField(
         controller: controller,
+        keyboardType: isNumberOnly ? TextInputType.number : TextInputType.text,
         decoration: InputDecoration(
           hintText: hintText,
           border: OutlineInputBorder(),

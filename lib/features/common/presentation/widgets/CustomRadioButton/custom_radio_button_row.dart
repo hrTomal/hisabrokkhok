@@ -1,3 +1,4 @@
+import 'package:business_tracker/config/styles/app_dimensions.dart';
 import 'package:flutter/material.dart';
 
 class CustomRadioButtonRow<T> extends StatelessWidget {
@@ -18,23 +19,44 @@ class CustomRadioButtonRow<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dimensions = AppDimensions(context);
     return Container(
       width: width,
       height: height,
-      // color: Theme.of(context).primaryColor,
+      padding: EdgeInsets.all(
+        10,
+      ),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceDim,
+        borderRadius: BorderRadius.all(
+          dimensions.globalCornerRadius,
+        ),
+      ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: options.map((T option) {
           return Expanded(
-            child: RadioListTile<T>(
-              title: FittedBox(child: Text(option.toString())),
-              value: option,
-              groupValue: groupValue,
-              onChanged: onChanged,
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 0.0), // Reduced padding
-              visualDensity: VisualDensity.compact,
-              dense: true,
+            child: GestureDetector(
+              onTap: () => onChanged(option),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Radio<T>(
+                    value: option,
+                    groupValue: groupValue,
+                    onChanged: onChanged,
+                    visualDensity: const VisualDensity(
+                        horizontal: VisualDensity.minimumDensity,
+                        vertical: VisualDensity.minimumDensity),
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  Flexible(
+                    child: FittedBox(
+                      child: Text(option.toString()),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         }).toList(),

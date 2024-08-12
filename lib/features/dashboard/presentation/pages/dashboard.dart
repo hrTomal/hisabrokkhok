@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../../../common/presentation/widgets/CustomAppBar/custom_app_bar.dart';
-import '../../../common/presentation/widgets/InputFields/common_text_input_field.dart';
-import '../../../common/presentation/widgets/InputFields/generic_dropdown.dart';
 import '../widgets/sliding_up_panel.dart';
 
 class Dashboard extends StatefulWidget {
@@ -19,7 +17,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   final PanelController _panelController = PanelController();
-
+  bool _isPanelOpen = false;
   @override
   Widget build(BuildContext context) {
     final dimensions = AppDimensions(context);
@@ -35,26 +33,52 @@ class _DashboardState extends State<Dashboard> {
             _panelController.close();
           }
         },
-        child: Padding(
-          padding: dimensions.pagePaddingGlobal,
-          child: Stack(
-            children: [
-              MainDashboardBody(),
-              SlidingUpPanel(
-                controller: _panelController,
-                // header: const Text('Menu'),
-                maxHeight: dimensions.screenHeight * 0.75,
-                minHeight: dimensions.screenHeight * 0.10,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(slidingPanelTopRadius),
-                  topRight: Radius.circular(slidingPanelTopRadius),
-                ),
-                panel: SlidingUpPanelWidget(),
-                body:
-                    const SizedBox.shrink(), // An empty widget behind the panel
+        child: Stack(
+          children: [
+            MainDashboardBody(),
+            SlidingUpPanel(
+              controller: _panelController,
+              maxHeight: dimensions.screenHeight * 0.75,
+              minHeight: dimensions.screenHeight * 0.18,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(slidingPanelTopRadius),
+                topRight: Radius.circular(slidingPanelTopRadius),
               ),
-            ],
-          ),
+              onPanelSlide: (position) {
+                setState(() {
+                  _isPanelOpen = position > 0.9;
+                });
+              },
+              header: Container(
+                width: dimensions.screenWidth,
+                height: dimensions.screenHeight * 0.05,
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    IconButton(
+                      onPressed: () {
+                        if (_panelController.isPanelOpen) {
+                          _panelController.close();
+                        } else {
+                          _panelController.open();
+                        }
+                      },
+                      icon: Icon(
+                        _isPanelOpen
+                            ? Icons.expand_more // Icon for expanded state
+                            : Icons.expand_less,
+                        color: Theme.of(context).colorScheme.secondary,
+                        size: dimensions.screenWidth * .10,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              panel: SlidingUpPanelWidget(),
+              body: const SizedBox.shrink(),
+            ),
+          ],
         ),
       ),
     );

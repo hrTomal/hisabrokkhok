@@ -10,7 +10,7 @@ class FixedSizedBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final dimensions = AppDimensions(context);
     return SizedBox(
-      height: dimensions.globalSizedBoxHeight,
+      height: dimensions.sizedBoxHeightGlobal,
     );
   }
 }

@@ -47,6 +47,16 @@ class _AllProductsState extends State<AllProducts> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        mini: true,
+        child: Icon(
+          Icons.add,
+          color: Theme.of(context).colorScheme.inversePrimary,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Padding(
         padding: dimensions.pagePaddingGlobal,
         child: Column(
@@ -61,15 +71,19 @@ class _AllProductsState extends State<AllProducts> {
                   },
                   child: const Text('Filter'),
                 ),
+                VerticalDivider(
+                  thickness: 1,
+                ),
                 CustomRadioButtonRow<String>(
                   options: const ['Product', 'Service', 'Recipe'],
                   groupValue: radioValue,
                   onChanged: (value) {
                     setState(() {
+                      print(value);
                       radioValue = value!;
                     });
                   },
-                  width: 300,
+                  width: dimensions.screenWidth * 0.60,
                 ),
                 // ElevatedButton(
                 //   onPressed: () {

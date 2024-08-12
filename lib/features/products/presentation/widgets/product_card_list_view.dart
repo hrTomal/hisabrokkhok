@@ -2,7 +2,7 @@ import 'package:business_tracker/config/styles/app_dimensions.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class ProductCard extends StatelessWidget {
+class ProductCardListView extends StatelessWidget {
   final String imageUrl;
   final String title;
   String? sku;
@@ -12,7 +12,7 @@ class ProductCard extends StatelessWidget {
   String? availableQuantity;
   String? sold;
 
-  ProductCard({
+  ProductCardListView({
     required this.imageUrl,
     required this.title,
     super.key,
@@ -25,11 +25,12 @@ class ProductCard extends StatelessWidget {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              width: dimensions.screenWidth * .3,
+              width: dimensions.screenWidth * .35,
               child: AspectRatio(
                 aspectRatio: 1.1,
                 child: Image.network(
@@ -41,7 +42,8 @@ class ProductCard extends StatelessWidget {
             // const SizedBox(height: 5),
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   FittedBox(
                     child: Text(

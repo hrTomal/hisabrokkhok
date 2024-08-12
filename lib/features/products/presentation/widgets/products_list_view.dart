@@ -1,4 +1,4 @@
-import 'package:business_tracker/features/products/presentation/widgets/product_card.dart';
+import 'package:business_tracker/features/products/presentation/widgets/product_card_list_view.dart';
 import 'package:flutter/material.dart';
 
 class ProductListView extends StatelessWidget {
@@ -11,7 +11,7 @@ class ProductListView extends StatelessWidget {
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-        return ProductCard(
+        return ProductCardListView(
           imageUrl: 'https://via.placeholder.com/150',
           title: 'Product ${index + 1}',
         );
