@@ -18,10 +18,45 @@ ThemeData lightTheme = ThemeData(
     ),
   ),
   // textTheme: TextTheme(
-  //   bodyLarge: TextStyle(color: MaterialTheme.lightScheme().onSurface),
-  //   bodyMedium: TextStyle(color: MaterialTheme.lightScheme().onSurfaceVariant),
-  //   displayLarge: TextStyle(color: MaterialTheme.lightScheme().primary),
-  //   displayMedium: TextStyle(color: MaterialTheme.lightScheme().onPrimary),
-  //   // Add other text styles as needed
+  //   titleLarge: TextStyle(
+  //     fontSize: 32,
+  //     fontWeight: FontWeight.bold,
+  //     color: MaterialTheme.lightScheme().onSurface,
+  //   ), // Title style
+  //   titleMedium: TextStyle(
+  //     fontSize: 24,
+  //     fontWeight: FontWeight.bold,
+  //     color: MaterialTheme.lightScheme().onSurface,
+  //   ), // Subtitle style
+  //   titleSmall: TextStyle(
+  //     fontSize: 20,
+  //     fontWeight: FontWeight.w600,
+  //     color: MaterialTheme.lightScheme().onSurfaceVariant,
+  //   ), // Label style
+  //   bodyLarge: TextStyle(
+  //     fontSize: 16,
+  //     fontWeight: FontWeight.normal,
+  //     color: MaterialTheme.lightScheme().onSurface,
+  //   ), // Description style
+  //   bodyMedium: TextStyle(
+  //     fontSize: 14,
+  //     fontWeight: FontWeight.normal,
+  //     color: MaterialTheme.lightScheme().onSurface,
+  //   ), // Additional text style
+  //   bodySmall: TextStyle(
+  //     fontSize: 12,
+  //     fontWeight: FontWeight.normal,
+  //     color: MaterialTheme.lightScheme().outline,
+  //   ),
+  //   labelLarge: TextStyle(
+  //     fontSize: 20,
+  //     fontWeight: FontWeight.w600,
+  //     color: MaterialTheme.lightScheme().primary,
+  //   ),
+  //   labelMedium: TextStyle(
+  //     fontSize: 16,
+  //     fontWeight: FontWeight.w600,
+  //     color: MaterialTheme.lightScheme().primary,
+  //   ),
   // ),
 );

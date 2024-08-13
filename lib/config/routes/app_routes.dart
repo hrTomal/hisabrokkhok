@@ -2,6 +2,8 @@ import 'package:business_tracker/features/auth/presentation/pages/auth_page.dart
 import 'package:business_tracker/features/categories/presentation/pages/add_categories.dart';
 import 'package:business_tracker/features/categories/presentation/pages/all_categories.dart';
 import 'package:business_tracker/features/dashboard/presentation/pages/dashboard.dart';
+import 'package:business_tracker/features/expenses/presentation/pages/add_expense.dart';
+import 'package:business_tracker/features/expenses/presentation/pages/all_expenses.dart';
 import 'package:business_tracker/features/products/presentation/pages/add_product.dart';
 import 'package:business_tracker/features/products/presentation/pages/all_products.dart';
 import 'package:business_tracker/features/sales/presentation/pages/add_sale.dart';
@@ -19,6 +21,8 @@ class AppRoutes {
   static const String addSalePage = AddSale.routeName;
   static const String allCategoriesPage = AllCategories.routeName;
   static const String addCategoriesPage = AddCategories.routeName;
+  static const String allExpensesPage = AllExpenses.routeName;
+  static const String addExpensesPage = AddExpense.routeName;
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -53,6 +57,14 @@ class AppRoutes {
       case addCategoriesPage:
         return MaterialPageRoute(
           builder: (_) => AddCategories(),
+        );
+      case allExpensesPage:
+        return MaterialPageRoute(
+          builder: (_) => AllExpenses(),
+        );
+      case addExpensesPage:
+        return MaterialPageRoute(
+          builder: (_) => AddExpense(),
         );
       default:
         return MaterialPageRoute(

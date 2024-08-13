@@ -1,16 +1,23 @@
 import 'package:business_tracker/config/styles/app_dimensions.dart';
 import 'package:business_tracker/core/utils/validation_utils.dart';
 import 'package:business_tracker/features/common/presentation/widgets/CustomAppBar/custom_app_bar.dart';
+import 'package:business_tracker/features/common/presentation/widgets/CustomRadioButton/custom_radio_button_row.dart';
 import 'package:business_tracker/features/common/presentation/widgets/InputFields/common_text_input_field.dart';
 import 'package:business_tracker/features/common/presentation/widgets/buttons/custom_save_floatingaction_button.dart';
 import 'package:business_tracker/features/common/presentation/widgets/misc/fixed_sized_box.dart';
 import 'package:business_tracker/features/common/presentation/widgets/snackbar/custom_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 
-class AddCategories extends StatelessWidget {
+class AddCategories extends StatefulWidget {
   static const String routeName = 'addCategoriesPage';
   const AddCategories({super.key});
 
+  @override
+  State<AddCategories> createState() => _AddCategoriesState();
+}
+
+class _AddCategoriesState extends State<AddCategories> {
+  var _categoryType = 'Product';
   @override
   Widget build(BuildContext context) {
     final dimensions = AppDimensions(context);
@@ -29,6 +36,25 @@ class AddCategories extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Text(
+              'Select Category Type ',
+              // style: Theme.of(context).textTheme.labelMedium,
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            CustomRadioButtonRow<String>(
+              options: const ['Product', 'Service', 'Recipe'],
+              groupValue: _categoryType,
+              onChanged: (value) {
+                setState(() {
+                  print(value);
+                  _categoryType = value!;
+                });
+              },
+              width: dimensions.screenWidth * 0.60,
+            ),
+            const FixedSizedBox(),
             CustomTextField(
               controller: controllers['title']!,
               labelText: 'Title',
@@ -56,7 +82,7 @@ class AddCategories extends StatelessWidget {
   // Handle save button press
   void _onSavePressed(
       BuildContext context, Map<String, TextEditingController> controllers) {
-    final errors = ValidationUtils.validateFields(
+    final errors = ValidationUtils.validateTextFields(
       [
         {
           'controller': controllers['title']!,

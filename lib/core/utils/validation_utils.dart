@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ValidationUtils {
   // Function to validate a list of controllers and return a list of error messages
-  static List<String> validateFields(
+  static List<String> validateTextFields(
     List<Map<String, dynamic>> fields,
   ) {
     final List<String> errorMessages = [];

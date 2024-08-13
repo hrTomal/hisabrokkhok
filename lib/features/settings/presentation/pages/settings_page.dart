@@ -2,6 +2,7 @@ import 'package:business_tracker/config/theme/bloc/theme_bloc.dart';
 import 'package:business_tracker/config/theme/bloc/theme_event.dart';
 import 'package:business_tracker/config/theme/blue_theme.dart';
 import 'package:business_tracker/config/theme/dark_theme.dart';
+import 'package:business_tracker/config/theme/pink_theme.dart';
 import 'package:business_tracker/config/theme/purple_theme.dart';
 import 'package:business_tracker/features/common/presentation/widgets/CustomAppBar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +58,14 @@ class _SettingsPageState extends State<SettingsPage> {
                 );
               },
               child: const Text('Purple Theme'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                BlocProvider.of<ThemeBloc>(context).add(
+                  ThemeChanged(pinkTheme),
+                );
+              },
+              child: const Text('Pink Theme'),
             ),
           ],
         ),

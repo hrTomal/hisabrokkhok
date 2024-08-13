@@ -1,6 +1,7 @@
 import 'package:business_tracker/config/styles/app_dimensions.dart';
 import 'package:business_tracker/features/dashboard/presentation/widgets/main_body/payment_overview_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MainDashboardBody extends StatefulWidget {
   const MainDashboardBody({super.key});
@@ -26,11 +27,25 @@ class _MainDashboardBodyState extends State<MainDashboardBody> {
                 children: [
                   IconButton(
                     onPressed: () {},
+                    icon: SvgPicture.asset(
+                      'assets/icons/whatspp_icon/whatsapp-16.svg',
+                      height: dimesions.screenWidth * .07,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
                     icon: Icon(
                       Icons.message,
                       color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
+                  // IconButton(
+                  //   onPressed: () {},
+                  //   icon: SvgPicture.asset(
+                  //     'assets/icons/youtube.svg',
+                  //     height: dimesions.screenWidth * .08,
+                  //   ),
+                  // ),
                   IconButton(
                     onPressed: () {},
                     icon: Icon(

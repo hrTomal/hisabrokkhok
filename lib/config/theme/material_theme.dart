@@ -115,6 +115,61 @@ class MaterialTheme {
     return theme(darkScheme());
   }
 
+  static ColorScheme blueScheme() {
+    return const ColorScheme(
+      brightness: Brightness.light,
+      primary: Color(0xFF2196F3),
+      surfaceTint: Color(0xFF2196F3),
+      onPrimary: Color(0xFFFFFFFF),
+      primaryContainer: Color(0xFFBBDEFB),
+      onPrimaryContainer: Color(0xFF0D47A1),
+      secondary: Color(0xFF64B5F6),
+      onSecondary: Color(0xFFFFFFFF),
+      secondaryContainer: Color(0xFFB3E5FC),
+      onSecondaryContainer: Color(0xFF01579B),
+      tertiary: Color(0xFF1976D2),
+      onTertiary: Color(0xFFFFFFFF),
+      tertiaryContainer: Color(0xFF82B1FF),
+      onTertiaryContainer: Color(0xFF0D47A1),
+      error: Color(0xFFB00020),
+      onError: Color(0xFFFFFFFF),
+      errorContainer: Color(0xFFFF8A80),
+      onErrorContainer: Color(0xFFC62828),
+      surface: Color(0xFFBBDEFB),
+      onSurface: Color(0xFF212121),
+      onSurfaceVariant: Color(0xFF757575),
+      outline: Color(0xFFBDBDBD),
+      outlineVariant: Color(0xFFE0E0E0),
+      shadow: Color(0xFF000000),
+      scrim: Color(0xFF000000),
+      inverseSurface: Color(0xFF424242),
+      inversePrimary: Color(0xFF64B5F6),
+      primaryFixed: Color(0xFF0D47A1),
+      onPrimaryFixed: Color(0xFFBBDEFB),
+      primaryFixedDim: Color(0xFF2196F3),
+      onPrimaryFixedVariant: Color(0xFF1976D2),
+      secondaryFixed: Color(0xFF64B5F6),
+      onSecondaryFixed: Color(0xFF82B1FF),
+      secondaryFixedDim: Color(0xFF2196F3),
+      onSecondaryFixedVariant: Color(0xFF01579B),
+      tertiaryFixed: Color(0xFF1976D2),
+      onTertiaryFixed: Color(0xFF0D47A1),
+      tertiaryFixedDim: Color(0xFF82B1FF),
+      onTertiaryFixedVariant: Color(0xFF1976D2),
+      surfaceDim: Color(0xFFBBDEFB),
+      surfaceBright: Color(0xFFE3F2FD),
+      surfaceContainerLowest: Color(0xFF2196F3),
+      surfaceContainerLow: Color(0xFF64B5F6),
+      surfaceContainer: Color(0xFFBBDEFB),
+      surfaceContainerHigh: Color(0xFF82B1FF),
+      surfaceContainerHighest: Color(0xFF0D47A1),
+    );
+  }
+
+  ThemeData blue() {
+    return theme(blueScheme());
+  }
+
   ThemeData theme(ColorScheme colorScheme) => ThemeData(
         useMaterial3: true,
         brightness: colorScheme.brightness,

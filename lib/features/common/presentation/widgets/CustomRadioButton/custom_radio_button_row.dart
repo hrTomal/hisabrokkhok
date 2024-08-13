@@ -23,11 +23,11 @@ class CustomRadioButtonRow<T> extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      padding: EdgeInsets.all(
+      padding: const EdgeInsets.all(
         10,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceDim,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.all(
           dimensions.globalCornerRadius,
         ),
