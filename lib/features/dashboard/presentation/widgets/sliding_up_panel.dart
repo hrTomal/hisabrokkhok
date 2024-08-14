@@ -1,6 +1,7 @@
 import 'package:business_tracker/config/styles/app_dimensions.dart';
 import 'package:business_tracker/features/categories/presentation/pages/all_categories.dart';
 import 'package:business_tracker/features/expenses/presentation/pages/all_expenses.dart';
+import 'package:business_tracker/features/investments/presentation/pages/investment_in_or_out_page.dart';
 import 'package:business_tracker/features/products/presentation/pages/add_product.dart';
 import 'package:business_tracker/features/products/presentation/pages/all_products.dart';
 import 'package:business_tracker/features/sales/presentation/pages/add_sale.dart';
@@ -29,17 +30,24 @@ class SlidingUpPanelWidget extends StatelessWidget {
         }
       },
       {
-        'icon': Icons.add_box_rounded,
-        'text': 'Add Product',
-        'onPressed': () {
-          Navigator.of(context).pushNamed(AddProduct.routeName);
-        }
-      },
-      {
         'icon': Icons.precision_manufacturing,
         'text': 'Categories',
         'onPressed': () {
           Navigator.of(context).pushNamed(AllCategories.routeName);
+        }
+      },
+      {
+        'icon': Icons.outbond,
+        'text': 'Investment In/Out',
+        'onPressed': () {
+          Navigator.of(context).pushNamed(InvestmentInOrOutPage.routeName);
+        }
+      },
+      {
+        'icon': Icons.add_box_rounded,
+        'text': 'Add Product',
+        'onPressed': () {
+          Navigator.of(context).pushNamed(AddProduct.routeName);
         }
       },
       {

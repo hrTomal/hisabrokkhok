@@ -4,6 +4,7 @@ import 'package:business_tracker/features/common/presentation/widgets/CustomAppB
 import 'package:business_tracker/features/common/presentation/widgets/CustomRadioButton/custom_radio_button_row.dart';
 import 'package:business_tracker/features/common/presentation/widgets/InputFields/common_text_input_field.dart';
 import 'package:business_tracker/features/common/presentation/widgets/buttons/custom_save_floatingaction_button.dart';
+import 'package:business_tracker/features/common/presentation/widgets/dropdown/custom_dropdown_search.dart';
 import 'package:business_tracker/features/common/presentation/widgets/misc/fixed_sized_box.dart';
 import 'package:business_tracker/features/common/presentation/widgets/snackbar/custom_error_snack_bar.dart';
 import 'package:dropdown_search/dropdown_search.dart';
@@ -61,6 +62,26 @@ class _AddCategoriesState extends State<AddExpense> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            CustomDropdownSearch(
+              items: [
+                'Option 1',
+                'Option 2',
+                'Option 3',
+                'Option 4',
+                'Option 5',
+                'Option 6'
+              ],
+              labelText: 'Select Expense Type',
+              createNewText: 'Create new Expense Type',
+              onChanged: (value) {
+                print('Selected: $value');
+              },
+              itemAsString: (item) => item,
+              onCreateNew: () {
+                // Navigator.of(context).pushNamed(AddCategories.routeName);
+              },
+            ),
+            const FixedSizedBox(),
             SizedBox(
               height: 50,
               child: Row(
