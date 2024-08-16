@@ -7,7 +7,7 @@ import 'package:business_tracker/features/common/presentation/widgets/buttons/cu
 import 'package:business_tracker/features/common/presentation/widgets/dropdown/custom_dropdown_search.dart';
 import 'package:business_tracker/features/common/presentation/widgets/misc/fixed_sized_box.dart';
 import 'package:business_tracker/features/common/presentation/widgets/snackbar/custom_error_snack_bar.dart';
-import 'package:dropdown_search/dropdown_search.dart';
+import 'package:business_tracker/features/expenses/presentation/pages/add_expense_types.dart';
 import 'package:flutter/material.dart';
 
 class AddExpense extends StatefulWidget {
@@ -58,117 +58,120 @@ class _AddCategoriesState extends State<AddExpense> {
       ),
       body: Padding(
         padding: dimensions.pagePaddingGlobal,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CustomDropdownSearch(
-              items: [
-                'Option 1',
-                'Option 2',
-                'Option 3',
-                'Option 4',
-                'Option 5',
-                'Option 6'
-              ],
-              labelText: 'Select Expense Type',
-              createNewText: 'Create new Expense Type',
-              onChanged: (value) {
-                print('Selected: $value');
-              },
-              itemAsString: (item) => item,
-              onCreateNew: () {
-                // Navigator.of(context).pushNamed(AddCategories.routeName);
-              },
-            ),
-            const FixedSizedBox(),
-            SizedBox(
-              height: 50,
-              child: Row(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CustomDropdownSearch(
+                items: [
+                  'Option 1',
+                  'Option 2',
+                  'Option 3',
+                  'Option 4',
+                  'Option 5',
+                  'Option 6'
+                ],
+                labelText: 'Select Expense Type',
+                createNewText: 'Create new Expense Type',
+                onChanged: (value) {
+                  print('Selected: $value');
+                },
+                itemAsString: (item) => item,
+                onCreateNew: () {
+                  Navigator.of(context)
+                      .pushNamed(AddExpenseTypesPage.routeName);
+                },
+              ),
+              const FixedSizedBox(),
+              // SizedBox(
+              //   height: 50,
+              //   child: Row(
+              //     children: [
+              //       SizedBox(
+              //         width: dimensions.screenWidth * 0.55,
+              //         child: DropdownSearch<String>(
+              //           popupProps: const PopupProps.menu(
+              //             showSearchBox: true,
+              //           ),
+              //           items: _items ?? [], // The items list
+              //           asyncItems: (String filter) async {
+              //             // Simulate a delay for loading items (e.g., fetching from API)
+              //             await Future.delayed(Duration(seconds: 2));
+              //             return [
+              //               "Food",
+              //               "Salary",
+              //               "Rent",
+              //               "Electricity Bill",
+              //               "Gas Bill"
+              //             ];
+              //           },
+              //           dropdownDecoratorProps: DropDownDecoratorProps(
+              //             dropdownSearchDecoration: InputDecoration(
+              //               labelText: "Expense Type",
+              //               // hintText: "Select Expense Type",
+              //               border: OutlineInputBorder(
+              //                 borderRadius: BorderRadius.circular(10.0),
+              //               ),
+              //             ),
+              //           ),
+              //           onChanged: (value) {
+              //             // Handle the change here
+              //             print("Selected: $value");
+              //             _expenseType = value!;
+              //           },
+              //           // selectedItem: "India",
+              //         ),
+              //       ),
+              //       Expanded(
+              //         child: ElevatedButton.icon(
+              //           onPressed: () {},
+              //           icon: Icon(Icons.add),
+              //           label: Text(
+              //             'Add Expense Type',
+              //             // style: Theme.of(context).textTheme.labelMedium,
+              //           ),
+              //         ),
+              //       )
+              //     ],
+              //   ),
+              // ),
+              // const FixedSizedBox(),
+              CustomTextField(
+                controller: controllers['amount']!,
+                labelText: 'Amount',
+                isNumberOnly: true,
+              ),
+              const FixedSizedBox(),
+              CustomTextField(
+                controller: controllers['description']!,
+                labelText: 'Description',
+              ),
+              const FixedSizedBox(),
+              Row(
                 children: [
-                  SizedBox(
-                    width: dimensions.screenWidth * 0.55,
-                    child: DropdownSearch<String>(
-                      popupProps: const PopupProps.menu(
-                        showSearchBox: true,
-                      ),
-                      items: _items ?? [], // The items list
-                      asyncItems: (String filter) async {
-                        // Simulate a delay for loading items (e.g., fetching from API)
-                        await Future.delayed(Duration(seconds: 2));
-                        return [
-                          "Food",
-                          "Salary",
-                          "Rent",
-                          "Electricity Bill",
-                          "Gas Bill"
-                        ];
-                      },
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                        dropdownSearchDecoration: InputDecoration(
-                          labelText: "Expense Type",
-                          // hintText: "Select Expense Type",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                        ),
-                      ),
-                      onChanged: (value) {
-                        // Handle the change here
-                        print("Selected: $value");
-                        _expenseType = value!;
-                      },
-                      // selectedItem: "India",
-                    ),
+                  Text(
+                    'Payment Method',
+                    // style: Theme.of(context).textTheme.labelMedium,
                   ),
-                  Expanded(
-                    child: ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: Icon(Icons.add),
-                      label: Text(
-                        'Add Expense Type',
-                        // style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                    ),
-                  )
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  CustomRadioButtonRow<String>(
+                    options: const ['Cash', 'Bank'],
+                    groupValue: _paymentMethod,
+                    onChanged: (value) {
+                      setState(() {
+                        print(value);
+                        _paymentMethod = value!;
+                      });
+                    },
+                    width: dimensions.screenWidth * 0.60,
+                  ),
                 ],
               ),
-            ),
-            const FixedSizedBox(),
-            CustomTextField(
-              controller: controllers['amount']!,
-              labelText: 'Amount',
-              isNumberOnly: true,
-            ),
-            const FixedSizedBox(),
-            CustomTextField(
-              controller: controllers['description']!,
-              labelText: 'Description',
-            ),
-            const FixedSizedBox(),
-            Row(
-              children: [
-                Text(
-                  'Payment Method',
-                  // style: Theme.of(context).textTheme.labelMedium,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                CustomRadioButtonRow<String>(
-                  options: const ['Cash', 'Bank'],
-                  groupValue: _paymentMethod,
-                  onChanged: (value) {
-                    setState(() {
-                      print(value);
-                      _paymentMethod = value!;
-                    });
-                  },
-                  width: dimensions.screenWidth * 0.60,
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

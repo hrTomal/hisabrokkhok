@@ -6,6 +6,7 @@ import 'package:business_tracker/features/products/presentation/pages/add_produc
 import 'package:business_tracker/features/products/presentation/pages/all_products.dart';
 import 'package:business_tracker/features/sales/presentation/pages/add_sale.dart';
 import 'package:business_tracker/features/settings/presentation/pages/settings_page.dart';
+import 'package:business_tracker/features/vendor/presentation/pages/all_vendors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/presentation/widgets/buttons/custom_tile_button.dart';
@@ -30,8 +31,29 @@ class SlidingUpPanelWidget extends StatelessWidget {
         }
       },
       {
+        'icon': Icons.inventory,
+        'text': 'Vendors',
+        'onPressed': () {
+          Navigator.of(context).pushNamed(AllVendorsPage.routeName);
+        }
+      },
+      {
+        'icon': Icons.man_2,
+        'text': 'Investors',
+        'onPressed': () {
+          // Navigator.of(context).pushNamed(AllCategories.routeName);
+        }
+      },
+      {
+        'icon': Icons.cabin,
+        'text': 'Expenses',
+        'onPressed': () {
+          Navigator.of(context).pushNamed(AllExpenses.routeName);
+        }
+      },
+      {
         'icon': Icons.precision_manufacturing,
-        'text': 'Categories',
+        'text': 'Product Categories',
         'onPressed': () {
           Navigator.of(context).pushNamed(AllCategories.routeName);
         }
@@ -48,13 +70,6 @@ class SlidingUpPanelWidget extends StatelessWidget {
         'text': 'Add Product',
         'onPressed': () {
           Navigator.of(context).pushNamed(AddProduct.routeName);
-        }
-      },
-      {
-        'icon': Icons.cabin,
-        'text': 'Expenses',
-        'onPressed': () {
-          Navigator.of(context).pushNamed(AllExpenses.routeName);
         }
       },
       {

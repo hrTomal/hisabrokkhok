@@ -22,12 +22,21 @@ class CustomRadioButtonColumn<T> extends StatelessWidget {
       width: width,
       height: height,
       child: Column(
+        mainAxisSize: MainAxisSize.min, // Removes padding between items
         children: options.map((T option) {
           return RadioListTile<T>(
-            title: FittedBox(child: Text(option.toString())),
+            title: FittedBox(
+                child: Text(
+              option.toString(),
+            )),
             value: option,
             groupValue: groupValue,
             onChanged: onChanged,
+            contentPadding:
+                EdgeInsets.zero, // Removes padding around the title and button
+            dense: true, // Makes the list tile compact
+            visualDensity:
+                VisualDensity.compact, // Further reduces space around the items
           );
         }).toList(),
       ),

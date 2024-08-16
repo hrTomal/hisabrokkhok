@@ -3,15 +3,16 @@ import 'package:business_tracker/features/categories/presentation/pages/add_cate
 import 'package:business_tracker/features/categories/presentation/pages/all_categories.dart';
 import 'package:business_tracker/features/dashboard/presentation/pages/dashboard.dart';
 import 'package:business_tracker/features/expenses/presentation/pages/add_expense.dart';
+import 'package:business_tracker/features/expenses/presentation/pages/add_expense_types.dart';
 import 'package:business_tracker/features/expenses/presentation/pages/all_expenses.dart';
 import 'package:business_tracker/features/investments/presentation/pages/investment_in_or_out_page.dart';
 import 'package:business_tracker/features/products/presentation/pages/add_product.dart';
 import 'package:business_tracker/features/products/presentation/pages/all_products.dart';
 import 'package:business_tracker/features/sales/presentation/pages/add_sale.dart';
 import 'package:business_tracker/features/settings/presentation/pages/settings_page.dart';
+import 'package:business_tracker/features/vendor/presentation/pages/add_vendors.dart';
+import 'package:business_tracker/features/vendor/presentation/pages/all_vendors.dart';
 import 'package:flutter/material.dart';
-
-import '../../features/dashboard/presentation/navigation/dashboard_arguments.dart';
 
 class AppRoutes {
   static const String authenticationPage = AuthenticationPage.routeName;
@@ -24,7 +25,10 @@ class AppRoutes {
   static const String addCategoriesPage = AddCategories.routeName;
   static const String allExpensesPage = AllExpenses.routeName;
   static const String addExpensesPage = AddExpense.routeName;
+  static const String addExpenseTypePage = AddExpenseTypesPage.routeName;
   static const String investmentInOutPage = InvestmentInOrOutPage.routeName;
+  static const String allVendorsPage = AllVendorsPage.routeName;
+  static const String addVendorPage = AddVendorPage.routeName;
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -68,9 +72,21 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => AddExpense(),
         );
+      case addExpenseTypePage:
+        return MaterialPageRoute(
+          builder: (_) => AddExpenseTypesPage(),
+        );
       case investmentInOutPage:
         return MaterialPageRoute(
           builder: (_) => InvestmentInOrOutPage(),
+        );
+      case allVendorsPage:
+        return MaterialPageRoute(
+          builder: (_) => AllVendorsPage(),
+        );
+      case addVendorPage:
+        return MaterialPageRoute(
+          builder: (_) => AddVendorPage(),
         );
       default:
         return MaterialPageRoute(
