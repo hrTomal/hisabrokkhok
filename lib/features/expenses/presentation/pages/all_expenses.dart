@@ -13,7 +13,7 @@ class AllExpenses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var dimensions = AppDimensions(context);
-    var _itemCount = 10;
+    var _itemCount = 0;
     var _floatingActionButton = FloatingActionButton.extended(
       onPressed: () {
         Navigator.of(context).pushNamed(AddExpense.routeName);
@@ -49,7 +49,7 @@ class AllExpenses extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return ExpenseListViewCard(
                     imageUrl: 'https://via.placeholder.com/150',
-                    title: 'Product ${index + 1}',
+                    title: 'Expenses ${index + 1}',
                   );
                 },
               ),

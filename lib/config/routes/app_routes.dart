@@ -12,6 +12,8 @@ import 'package:business_tracker/features/sales/presentation/pages/add_sale.dart
 import 'package:business_tracker/features/settings/presentation/pages/settings_page.dart';
 import 'package:business_tracker/features/vendor/presentation/pages/add_vendors.dart';
 import 'package:business_tracker/features/vendor/presentation/pages/all_vendors.dart';
+import 'package:business_tracker/features/warehouse/presentation/pages/add_warehouse.dart';
+import 'package:business_tracker/features/warehouse/presentation/pages/all_warehouses.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -29,6 +31,8 @@ class AppRoutes {
   static const String investmentInOutPage = InvestmentInOrOutPage.routeName;
   static const String allVendorsPage = AllVendorsPage.routeName;
   static const String addVendorPage = AddVendorPage.routeName;
+  static const String allWarehousesPage = AllWarehousesPage.routeName;
+  static const String addWarehousePage = AddWarehousePage.routeName;
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -87,6 +91,14 @@ class AppRoutes {
       case addVendorPage:
         return MaterialPageRoute(
           builder: (_) => AddVendorPage(),
+        );
+      case allWarehousesPage:
+        return MaterialPageRoute(
+          builder: (_) => AllWarehousesPage(),
+        );
+      case addWarehousePage:
+        return MaterialPageRoute(
+          builder: (_) => AddWarehousePage(),
         );
       default:
         return MaterialPageRoute(

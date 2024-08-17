@@ -1,39 +1,34 @@
 import 'package:business_tracker/config/styles/app_dimensions.dart';
 import 'package:business_tracker/core/utils/validation_utils.dart';
 import 'package:business_tracker/features/common/presentation/widgets/CustomAppBar/custom_app_bar.dart';
-import 'package:business_tracker/features/common/presentation/widgets/CustomRadioButton/custom_radio_button_row.dart';
 import 'package:business_tracker/features/common/presentation/widgets/InputFields/common_text_input_field.dart';
 import 'package:business_tracker/features/common/presentation/widgets/buttons/custom_save_floatingaction_button.dart';
 import 'package:business_tracker/features/common/presentation/widgets/misc/fixed_sized_box.dart';
 import 'package:business_tracker/features/common/presentation/widgets/snackbar/custom_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 
-class AddCategories extends StatefulWidget {
-  static const String routeName = 'addCategoriesPage';
-  const AddCategories({super.key});
+class AddWarehousePage extends StatefulWidget {
+  static const String routeName = 'addWarehousePage';
+  const AddWarehousePage({super.key});
 
   @override
-  State<AddCategories> createState() => _AddCategoriesState();
+  State<AddWarehousePage> createState() => _AddWarehousePageState();
 }
 
-class _AddCategoriesState extends State<AddCategories> {
-  var _categoryType = 'Product';
+class _AddWarehousePageState extends State<AddWarehousePage> {
   @override
   Widget build(BuildContext context) {
-    final dimensions = AppDimensions(context);
-    final controllers = _initControllers();
+    var dimensions = AppDimensions(context);
+    final textFieldController = _initTextFieldControllers();
 
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'Categories',
-      ),
+      appBar: CustomAppBar(title: 'Add Warehouse'),
       floatingActionButton: CustomSaveFloatingActionButton(
-        onPressed: () => _onSavePressed(context, controllers),
+        onPressed: () => _onSavePressed(context, textFieldController),
       ),
       body: Padding(
         padding: dimensions.pagePaddingGlobal,
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
@@ -49,35 +44,20 @@ class _AddCategoriesState extends State<AddCategories> {
               ),
             ),
             const FixedSizedBox(),
-            const Text(
-              'Select Category Type ',
-              // style: Theme.of(context).textTheme.labelMedium,
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            CustomRadioButtonRow<String>(
-              options: const ['Product', 'Service', 'Recipe'],
-              groupValue: _categoryType,
-              onChanged: (value) {
-                setState(() {
-                  print(value);
-                  _categoryType = value!;
-                });
-              },
-              width: dimensions.screenWidth * 0.60,
+            CustomTextField(
+              controller: textFieldController['warehouseName']!,
+              labelText: 'Warehouse Name',
             ),
             const FixedSizedBox(),
             CustomTextField(
-              controller: controllers['title']!,
-              labelText: 'Title',
+              controller: textFieldController['address']!,
+              labelText: 'Address',
             ),
             const FixedSizedBox(),
             CustomTextField(
-              controller: controllers['description']!,
+              controller: textFieldController['description']!,
               labelText: 'Description',
             ),
-            const FixedSizedBox(),
           ],
         ),
       ),
@@ -85,9 +65,10 @@ class _AddCategoriesState extends State<AddCategories> {
   }
 
   // Initialize TextEditingControllers
-  Map<String, TextEditingController> _initControllers() {
+  Map<String, TextEditingController> _initTextFieldControllers() {
     return {
-      'title': TextEditingController(),
+      'warehouseName': TextEditingController(),
+      'address': TextEditingController(),
       'description': TextEditingController(),
     };
   }
@@ -98,12 +79,8 @@ class _AddCategoriesState extends State<AddCategories> {
     final errors = ValidationUtils.validateTextFields(
       [
         {
-          'controller': controllers['title']!,
-          'errorMessage': 'Title is required',
-        },
-        {
-          'controller': controllers['description']!,
-          'errorMessage': 'Description is required',
+          'controller': controllers['warehouseName']!,
+          'errorMessage': 'Warehouse Name is required',
         },
       ],
     );

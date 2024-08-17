@@ -38,6 +38,19 @@ class _AddVendorPageState extends State<AddVendorPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(5),
+                  ),
+                ),
+              ),
+              const FixedSizedBox(),
               CustomTextField(
                 controller: controllers['fullName']!,
                 labelText: 'Full Name',

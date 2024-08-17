@@ -19,27 +19,10 @@ class AddExpense extends StatefulWidget {
 }
 
 class _AddCategoriesState extends State<AddExpense> {
-  bool _isLoading = false;
   String? _expenseType;
-  List<String>? _items;
   @override
   void initState() {
     super.initState();
-    _loadItems();
-  }
-
-  Future<void> _loadItems() async {
-    setState(() {
-      _isLoading = true;
-    });
-
-    // Simulate a delay (e.g., fetching from an API)
-    await Future.delayed(Duration(seconds: 2));
-
-    setState(() {
-      _items = ["Food", "Salary", "Rent", "Electricity Bill", "Gas Bill"];
-      _isLoading = false;
-    });
   }
 
   var _paymentMethod = 'Cash';
@@ -84,59 +67,6 @@ class _AddCategoriesState extends State<AddExpense> {
                 },
               ),
               const FixedSizedBox(),
-              // SizedBox(
-              //   height: 50,
-              //   child: Row(
-              //     children: [
-              //       SizedBox(
-              //         width: dimensions.screenWidth * 0.55,
-              //         child: DropdownSearch<String>(
-              //           popupProps: const PopupProps.menu(
-              //             showSearchBox: true,
-              //           ),
-              //           items: _items ?? [], // The items list
-              //           asyncItems: (String filter) async {
-              //             // Simulate a delay for loading items (e.g., fetching from API)
-              //             await Future.delayed(Duration(seconds: 2));
-              //             return [
-              //               "Food",
-              //               "Salary",
-              //               "Rent",
-              //               "Electricity Bill",
-              //               "Gas Bill"
-              //             ];
-              //           },
-              //           dropdownDecoratorProps: DropDownDecoratorProps(
-              //             dropdownSearchDecoration: InputDecoration(
-              //               labelText: "Expense Type",
-              //               // hintText: "Select Expense Type",
-              //               border: OutlineInputBorder(
-              //                 borderRadius: BorderRadius.circular(10.0),
-              //               ),
-              //             ),
-              //           ),
-              //           onChanged: (value) {
-              //             // Handle the change here
-              //             print("Selected: $value");
-              //             _expenseType = value!;
-              //           },
-              //           // selectedItem: "India",
-              //         ),
-              //       ),
-              //       Expanded(
-              //         child: ElevatedButton.icon(
-              //           onPressed: () {},
-              //           icon: Icon(Icons.add),
-              //           label: Text(
-              //             'Add Expense Type',
-              //             // style: Theme.of(context).textTheme.labelMedium,
-              //           ),
-              //         ),
-              //       )
-              //     ],
-              //   ),
-              // ),
-              // const FixedSizedBox(),
               CustomTextField(
                 controller: controllers['amount']!,
                 labelText: 'Amount',
