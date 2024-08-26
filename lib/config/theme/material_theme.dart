@@ -66,7 +66,7 @@ class MaterialTheme {
       primary: Color(4289382399),
       surfaceTint: Color(4289382399),
       onPrimary: Color(4278857823),
-      primaryContainer: Color(4280829815),
+      primaryContainer: Color.fromARGB(255, 92, 101, 116),
       onPrimaryContainer: Color(4292273151),
       secondary: Color(4290692828),
       onSecondary: Color(4280824129),

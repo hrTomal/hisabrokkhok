@@ -78,14 +78,28 @@ class _MainDashboardBodyState extends State<MainDashboardBody> {
               ),
             ),
           ),
-          PaymentOverviewCard(),
-          PaymentOverviewCard(),
-          PaymentOverviewCard(),
-          PaymentOverviewCard(),
-          PaymentOverviewCard(),
-          PaymentOverviewCard(),
+          _buildPaymentOverviewCards(dimesions),
         ],
       ),
+    );
+  }
+
+  Widget _buildPaymentOverviewCards(AppDimensions dimensions) {
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: dimensions.isMobile
+            ? 1
+            : 2, // One column for mobile, two for other screens
+        crossAxisSpacing: 16.0, // Spacing between columns
+        mainAxisSpacing: 16.0, // Spacing between rows
+        childAspectRatio: dimensions.isTablet
+            ? 1.3
+            : 1.9, // Adjusts the height of the grid cells
+      ),
+      itemCount: 6, // Number of PaymentOverviewCard widgets
+      itemBuilder: (context, index) => PaymentOverviewCard(),
     );
   }
 }

@@ -25,37 +25,28 @@ class InnerGenericCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Icon(icon, color: Theme.of(context).colorScheme.primary),
+          Icon(
+            icon,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           // const VerticalDivider(thickness: 1,)
           Padding(
-            padding: const EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 5),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(label, style: Theme.of(context).textTheme.bodySmall),
-                Text(value, style: Theme.of(context).textTheme.bodyLarge),
+                FittedBox(
+                    child: Text(label,
+                        style: Theme.of(context).textTheme.bodySmall)),
+                FittedBox(
+                    child: Text(value,
+                        style: Theme.of(context).textTheme.bodyLarge)),
               ],
             ),
           )
         ],
       ),
     );
-    // return Container(
-    //   padding: const EdgeInsets.all(8.0),
-    //   decoration: BoxDecoration(
-    //     color: Theme.of(context).colorScheme.surface,
-    //     borderRadius: BorderRadius.circular(10),
-    //   ),
-    //   child: Column(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     children: [
-    //       Icon(icon, color: Theme.of(context).colorScheme.primary),
-    //       const SizedBox(height: 8),
-    //       Text(label, style: Theme.of(context).textTheme.bodySmall),
-    //       Text(value, style: Theme.of(context).textTheme.bodyLarge),
-    //     ],
-    //   ),
-    // );
   }
 }

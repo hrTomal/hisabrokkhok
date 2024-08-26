@@ -25,4 +25,23 @@ class AppDimensions {
   double get sizedBoxHeightGlobal => 15;
   double get halfTextFieldWidth =>
       (screenWidth * 0.48) - (paddingForpagePaddingGlobal);
+
+  // Define breakpoints for different screen sizes
+  static const double mobileBreakpoint = 600; // Below 600 is considered mobile
+  static const double tabletBreakpoint =
+      1024; // Below 1024 and above 600 is considered tablet
+  static const double webBreakpoint =
+      1440; // Above 1440 is considered large web screens
+
+  // Check if the screen is considered mobile, tablet, or web
+  bool get isMobile => screenWidth < mobileBreakpoint;
+  bool get isTablet =>
+      screenWidth >= mobileBreakpoint && screenWidth < tabletBreakpoint;
+  bool get isWeb => screenWidth >= tabletBreakpoint;
+
+  int get rowCardCount {
+    if (isWeb) return 4;
+    if (isTablet) return 3;
+    return 2; // Default for mobile
+  }
 }

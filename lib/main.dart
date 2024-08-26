@@ -4,6 +4,7 @@ import 'package:business_tracker/features/auth/presentation/pages/auth_page.dart
 import 'package:business_tracker/features/dashboard/presentation/pages/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'config/routes/app_routes.dart';
 

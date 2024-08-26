@@ -110,6 +110,14 @@ class SlidingUpPanelWidget extends StatelessWidget {
       {'icon': Icons.attach_money, 'text': 'Pay/Get cash', 'onPressed': () {}},
     ];
 
+    var _crossAxisTileCount = 4;
+    if (dimensions.isMobile) {
+      _crossAxisTileCount = 4;
+    } else if (dimensions.isTablet) {
+      _crossAxisTileCount = 6;
+    } else {
+      _crossAxisTileCount = 8;
+    }
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -122,12 +130,12 @@ class SlidingUpPanelWidget extends StatelessWidget {
         padding: dimensions.pagePaddingGlobal,
         child: Padding(
           padding: EdgeInsets.only(
-            top: dimensions.screenHeight * 0.05,
+            top: dimensions.screenWidth * 0.08,
           ),
           child: GridView.builder(
             itemCount: tiles.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4, // Number of tiles in a row
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: _crossAxisTileCount, // Number of tiles in a row
               crossAxisSpacing: 2.0,
               mainAxisSpacing: 2.0,
               childAspectRatio: 1, // Adjust the height/width ratio of the tiles

@@ -1,10 +1,10 @@
 import 'package:business_tracker/config/styles/app_dimensions.dart';
-import 'package:business_tracker/features/dashboard/presentation/widgets/main_dashboard_body.dart';
+import 'package:business_tracker/features/dashboard/presentation/widgets/dashboard_charts.dart';
+import 'package:business_tracker/features/dashboard/presentation/widgets/dashboard_navigations.dart';
+import 'package:business_tracker/features/dashboard/presentation/widgets/main_body/payment_overview_card.dart';
+import 'package:business_tracker/features/settings/presentation/pages/settings_page.dart';
 import 'package:flutter/material.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
-
 import '../../../common/presentation/widgets/CustomAppBar/custom_app_bar.dart';
-import '../widgets/sliding_up_panel.dart';
 
 class Dashboard extends StatefulWidget {
   static const String routeName = 'dashboard_page';
@@ -16,71 +16,53 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  final PanelController _panelController = PanelController();
-  bool _isPanelOpen = false;
   @override
   Widget build(BuildContext context) {
     final dimensions = AppDimensions(context);
-    var slidingPanelTopRadius = dimensions.screenWidth * .040;
 
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: 'Dashboard',
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.of(context).pushNamed(SettingsPage.routeName);
+            },
+          ),
+        ],
       ),
-      body: GestureDetector(
-        onTap: () {
-          if (_panelController.isPanelOpen) {
-            _panelController.close();
-          }
-        },
-        child: Stack(
-          children: [
-            MainDashboardBody(),
-            SlidingUpPanel(
-              controller: _panelController,
-              maxHeight: dimensions.screenHeight * 0.75,
-              minHeight: dimensions.screenHeight * 0.18,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(slidingPanelTopRadius),
-                topRight: Radius.circular(slidingPanelTopRadius),
-              ),
-              onPanelSlide: (position) {
-                setState(() {
-                  _isPanelOpen = position > 0.9;
-                });
-              },
-              header: Container(
-                width: dimensions.screenWidth,
-                height: dimensions.screenHeight * 0.05,
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: () {
-                        if (_panelController.isPanelOpen) {
-                          _panelController.close();
-                        } else {
-                          _panelController.open();
-                        }
-                      },
-                      icon: Icon(
-                        _isPanelOpen
-                            ? Icons.expand_more // Icon for expanded state
-                            : Icons.expand_less,
-                        color: Theme.of(context).colorScheme.secondary,
-                        size: dimensions.screenWidth * .10,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              panel: SlidingUpPanelWidget(),
-              body: const SizedBox.shrink(),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: dimensions.pagePaddingGlobal,
+          child: Column(
+            children: [
+              PaymentOverviewCard(),
+              DashboardCharts(),
+              _buildPaymentOverviewCards(dimensions),
+            ],
+          ),
         ),
       ),
+    );
+  }
+
+  Widget _buildPaymentOverviewCards(AppDimensions dimensions) {
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: dimensions.isMobile
+            ? 1
+            : 2, // One column for mobile, two for other screens
+        crossAxisSpacing: 16.0, // Spacing between columns
+        mainAxisSpacing: 16.0, // Spacing between rows
+        childAspectRatio: dimensions.isTablet
+            ? 1.3
+            : 1.9, // Adjusts the height of the grid cells
+      ),
+      itemCount: 2, // Number of PaymentOverviewCard widgets
+      itemBuilder: (context, index) => PaymentOverviewCard(),
     );
   }
 }

@@ -17,7 +17,7 @@ class GenericDashboardCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final dimensions = AppDimensions(context);
     return Card(
-      color: Theme.of(context).colorScheme.surfaceBright,
+      // color: Colors.red,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
@@ -40,15 +40,20 @@ class GenericDashboardCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 5),
-            GridView.count(
-              physics:
-                  const NeverScrollableScrollPhysics(), // Disable scrolling
-              shrinkWrap: true,
-              crossAxisCount: 2, // Number of columns in the grid
-              crossAxisSpacing: 10.0,
-              mainAxisSpacing: 10.0,
-              childAspectRatio: 3, // Adjust as needed
-              children: gridItems,
+            Flexible(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return GridView.count(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 5.0,
+                    mainAxisSpacing: 5.0,
+                    childAspectRatio: dimensions.isTablet ? 2 : 2.8,
+                    children: gridItems,
+                  );
+                },
+              ),
             ),
           ],
         ),
