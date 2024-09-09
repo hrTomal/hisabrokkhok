@@ -1,5 +1,6 @@
 import 'package:business_tracker/features/common/presentation/widgets/buttons/custom_buttons.dart';
 import 'package:business_tracker/features/dashboard/presentation/pages/dashboard.dart';
+import 'package:business_tracker/features/subscription/presentation/pages/subcription_plans.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticationPage extends StatefulWidget {
@@ -13,8 +14,6 @@ class AuthenticationPage extends StatefulWidget {
 class _AuthenticationPageState extends State<AuthenticationPage> {
   @override
   Widget build(BuildContext context) {
-    var pageHeight = MediaQuery.of(context).size.height;
-    var pageWidth = MediaQuery.of(context).size.width;
     return SafeArea(
         child: Scaffold(
       body: Center(
@@ -29,55 +28,60 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
               ),
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'Email',
-                  hintText: 'example@email.com',
+                  labelText: 'Email/Phone',
+                  // hintText: 'example@email.com',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  hintText: '**************',
+                  // hintText: '**************',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 obscureText: true,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  textStyle: const TextStyle(fontSize: 18),
+                ),
                 child: Text(
                   'Login',
                   style: TextStyle(
                     color: Theme.of(context).primaryColorLight,
                   ),
                 ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  textStyle: TextStyle(fontSize: 18),
-                ),
               ),
               CustomButtonPrimary(
-                text: '',
-                height: pageHeight,
-                width: pageWidth,
+                text: 'Navigate',
                 onPressed: () {
                   Navigator.of(context).pushNamed(Dashboard.routeName);
                 },
               ),
-              SizedBox(height: 20),
+              CustomButtonPrimary(
+                text: 'Plans',
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushNamed(SubcriptionPlansPage.routeName);
+                },
+              ),
               TextButton(
                 onPressed: () {},
-                child: Text('New user? Register Now'),
                 style: TextButton.styleFrom(
                   backgroundColor: Theme.of(context).indicatorColor,
-                  textStyle: TextStyle(fontSize: 16),
+                  textStyle: Theme.of(context).textTheme.bodyMedium,
                 ),
+                child: const Text('New user? Register Now'),
               ),
             ],
           ),

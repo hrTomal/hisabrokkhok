@@ -10,6 +10,7 @@ import 'package:business_tracker/features/products/presentation/pages/add_produc
 import 'package:business_tracker/features/products/presentation/pages/all_products.dart';
 import 'package:business_tracker/features/sales/presentation/pages/add_sale.dart';
 import 'package:business_tracker/features/settings/presentation/pages/settings_page.dart';
+import 'package:business_tracker/features/subscription/presentation/pages/subcription_plans.dart';
 import 'package:business_tracker/features/vendor/presentation/pages/add_vendors.dart';
 import 'package:business_tracker/features/vendor/presentation/pages/all_vendors.dart';
 import 'package:business_tracker/features/warehouse/presentation/pages/add_warehouse.dart';
@@ -33,24 +34,25 @@ class AppRoutes {
   static const String addVendorPage = AddVendorPage.routeName;
   static const String allWarehousesPage = AllWarehousesPage.routeName;
   static const String addWarehousePage = AddWarehousePage.routeName;
+  static const String subscriptionPlansPage = SubcriptionPlansPage.routeName;
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case authenticationPage:
         return MaterialPageRoute(
-          builder: (_) => AuthenticationPage(),
+          builder: (_) => const AuthenticationPage(),
         );
       case dashboardPage:
         return MaterialPageRoute(
-          builder: (_) => Dashboard(),
+          builder: (_) => const Dashboard(),
         );
       case settingsPage:
         return MaterialPageRoute(
-          builder: (_) => SettingsPage(),
+          builder: (_) => const SettingsPage(),
         );
       case allProductsPage:
         return MaterialPageRoute(
-          builder: (_) => AllProducts(),
+          builder: (_) => const AllProducts(),
         );
       case addProductPage:
         return MaterialPageRoute(
@@ -58,39 +60,39 @@ class AppRoutes {
         );
       case addSalePage:
         return MaterialPageRoute(
-          builder: (_) => AddSale(),
+          builder: (_) => const AddSale(),
         );
       case allCategoriesPage:
         return MaterialPageRoute(
-          builder: (_) => AllCategories(),
+          builder: (_) => const AllCategories(),
         );
       case addCategoriesPage:
         return MaterialPageRoute(
-          builder: (_) => AddCategories(),
+          builder: (_) => const AddCategories(),
         );
       case allExpensesPage:
         return MaterialPageRoute(
-          builder: (_) => AllExpenses(),
+          builder: (_) => const AllExpenses(),
         );
       case addExpensesPage:
         return MaterialPageRoute(
-          builder: (_) => AddExpense(),
+          builder: (_) => const AddExpense(),
         );
       case addExpenseTypePage:
         return MaterialPageRoute(
-          builder: (_) => AddExpenseTypesPage(),
+          builder: (_) => const AddExpenseTypesPage(),
         );
       case investmentInOutPage:
         return MaterialPageRoute(
-          builder: (_) => InvestmentInOrOutPage(),
+          builder: (_) => const InvestmentInOrOutPage(),
         );
       case allVendorsPage:
         return MaterialPageRoute(
-          builder: (_) => AllVendorsPage(),
+          builder: (_) => const AllVendorsPage(),
         );
       case addVendorPage:
         return MaterialPageRoute(
-          builder: (_) => AddVendorPage(),
+          builder: (_) => const AddVendorPage(),
         );
       case allWarehousesPage:
         return MaterialPageRoute(
@@ -98,7 +100,11 @@ class AppRoutes {
         );
       case addWarehousePage:
         return MaterialPageRoute(
-          builder: (_) => AddWarehousePage(),
+          builder: (_) => const AddWarehousePage(),
+        );
+      case subscriptionPlansPage:
+        return MaterialPageRoute(
+          builder: (_) => const SubcriptionPlansPage(),
         );
       default:
         return MaterialPageRoute(

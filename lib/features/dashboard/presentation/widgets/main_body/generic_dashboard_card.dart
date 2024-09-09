@@ -7,17 +7,16 @@ class GenericDashboardCard extends StatelessWidget {
   final List<Widget> gridItems;
 
   const GenericDashboardCard({
-    Key? key,
+    super.key,
     required this.title,
     this.dropdown,
     required this.gridItems,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final dimensions = AppDimensions(context);
     return Card(
-      // color: Colors.red,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
@@ -30,7 +29,7 @@ class GenericDashboardCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: dimensions.pagePaddingGlobal,
+                  padding: const EdgeInsets.all(5),
                   child: Text(
                     title,
                     style: Theme.of(context).textTheme.titleMedium,
@@ -40,20 +39,19 @@ class GenericDashboardCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 5),
-            Flexible(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  return GridView.count(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 5.0,
-                    mainAxisSpacing: 5.0,
-                    childAspectRatio: dimensions.isTablet ? 2 : 2.8,
-                    children: gridItems,
-                  );
-                },
-              ),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                return GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap:
+                      true, // Allows GridView to take up necessary space
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 5.0,
+                  mainAxisSpacing: 5.0,
+                  childAspectRatio: dimensions.isTablet ? 2 : 2.5,
+                  children: gridItems,
+                );
+              },
             ),
           ],
         ),

@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 
 class CustomButtonPrimary extends StatelessWidget {
   final String text;
-  final double? height;
-  final double? width;
   final VoidCallback onPressed;
 
-  CustomButtonPrimary({
+  const CustomButtonPrimary({
+    super.key,
     required this.text,
     required this.onPressed,
-    this.height,
-    this.width,
   });
 
   @override
@@ -19,11 +16,11 @@ class CustomButtonPrimary extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).primaryColor,
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       ),
       child: FittedBox(
         child: Text(
-          '$text${height}_$width',
+          text,
           style: TextStyle(
             color: Theme.of(context).primaryColorLight,
           ),

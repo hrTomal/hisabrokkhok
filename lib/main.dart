@@ -18,6 +18,8 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -28,12 +30,11 @@ class _MyAppState extends State<MyApp> {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, state) {
         return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Business Tracker',
-          theme: state.theme,
-          onGenerateRoute: AppRoutes.generateRoute,
-          home: Dashboard(),
-        );
+            debugShowCheckedModeBanner: false,
+            title: 'Business Tracker',
+            theme: state.theme,
+            onGenerateRoute: AppRoutes.generateRoute,
+            home: AuthenticationPage());
       },
     );
   }

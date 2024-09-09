@@ -41,8 +41,17 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Column(
           children: [
             _themeWidet(context),
-            const Divider(
-              height: 2,
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.logout),
+                label: const Text('Logout'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 230, 73, 73),
+                  foregroundColor: Colors.white,
+                ),
+              ),
             )
           ],
         ),
@@ -50,44 +59,46 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
-  Row _themeWidet(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Text(
-          'Change Theme',
-          style: Theme.of(context).textTheme.labelLarge,
-        ),
-        BlocBuilder<ThemeBloc, ThemeState>(
-          builder: (context, state) {
-            // Set the _selectedTheme based on the current theme state
-            _selectedTheme = _themes.entries
-                .firstWhere((entry) => entry.value == state.theme)
-                .key;
+  Card _themeWidet(BuildContext context) {
+    return Card(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            'Change Theme',
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
+          BlocBuilder<ThemeBloc, ThemeState>(
+            builder: (context, state) {
+              // Set the _selectedTheme based on the current theme state
+              _selectedTheme = _themes.entries
+                  .firstWhere((entry) => entry.value == state.theme)
+                  .key;
 
-            return DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                value: _selectedTheme,
-                items:
-                    _themes.keys.map<DropdownMenuItem<String>>((String theme) {
-                  return DropdownMenuItem<String>(
-                    value: theme,
-                    child: Text(theme),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    _selectedTheme = newValue!;
-                    BlocProvider.of<ThemeBloc>(context).add(
-                      ThemeChanged(_themes[_selectedTheme]!),
+              return DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  value: _selectedTheme,
+                  items: _themes.keys
+                      .map<DropdownMenuItem<String>>((String theme) {
+                    return DropdownMenuItem<String>(
+                      value: theme,
+                      child: Text(theme),
                     );
-                  });
-                },
-              ),
-            );
-          },
-        ),
-      ],
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedTheme = newValue!;
+                      BlocProvider.of<ThemeBloc>(context).add(
+                        ThemeChanged(_themes[_selectedTheme]!),
+                      );
+                    });
+                  },
+                ),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

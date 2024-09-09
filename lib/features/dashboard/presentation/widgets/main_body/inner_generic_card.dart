@@ -7,17 +7,17 @@ class InnerGenericCard extends StatelessWidget {
   final IconData icon;
 
   const InnerGenericCard({
-    Key? key,
+    super.key,
     required this.label,
     required this.value,
     required this.icon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final dimensions = AppDimensions(context);
     return Container(
-      padding: dimensions.pagePaddingGlobal,
+      padding: const EdgeInsets.only(left: 5),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(10),
@@ -38,10 +38,10 @@ class InnerGenericCard extends StatelessWidget {
               children: [
                 FittedBox(
                     child: Text(label,
-                        style: Theme.of(context).textTheme.bodySmall)),
+                        style: Theme.of(context).textTheme.bodyMedium)),
                 FittedBox(
                     child: Text(value,
-                        style: Theme.of(context).textTheme.bodyLarge)),
+                        style: Theme.of(context).textTheme.bodyMedium)),
               ],
             ),
           )
